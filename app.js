@@ -1,70 +1,414 @@
-// Array holding local song data paths so files never expire
 const tracks = [
-    { title: "Born To Sin", artist: "Desire4u", url: "music/borntosin.mp3", img: "images/mi9.jpg" },
-    { title: "I call your name", artist: "Desire4u", url: "music/icallyourname.mp3", img: "images/mi11.jpg" },
-    { title: "Twin Flame", artist: "Desire4u", url: "music/twinflames.mp3", img: "images/mi12.jpg" },
-    { title: "Endlessly", artist: "Desire4u", url: "music/endlessly.mp3", img: "images/mi16.jpg" },
-    { title: "Fallen Angels", artist: "Desire4u", url: "music/fallenangels.mp3", img: "images/mi10.jpg" },
-    { tittle: "All Mine", artist: "Whatsaheart", url: "music/allmine.mp3", img: "images/mi7.jpg" },
-    { tittle: "Drown", artist: "Whatsaheart", url: "music/drown.mp3", img: "images/mi1.jpg" },
-    { tittle: "For Her", artist: "Whatsaheart", url: "music/forher.mp3", img: "images/mi2.jpg" },
-    { tittle: "Howlling", artist: "Whatsaheart", url: "music/howling.mp3", img: "images/mi4.jpg" },
-    { tittle: "Love Sick", artist: "Whatsaheart", url: "music/lovesick.mp3", img: "images/mi5.jpg" },
-    { tittle: "Sky Falling For You", artist: "Whatsaheart", url: "music/skyfallingforyou.mp3", img: "images/mi8.jpg" },
-    { tittle: "Snakelike", artist: "Whatsaheart", url: "music/snakelike.mp3", img: "images/mi3.jpg" },
-    { tittle: "Taking Over Me", artist: "Whatsaheart", url: "music/takingoverme.mp3", img: "images/mi6.jpg" },
-    { tittle: "Vxlentine", artist: "Whatsaheart", url: "music/vxlentine.mp3", img: "images/mi46.jpg" },
-    { tittle: "Wishing Dead", artist: "Blacklite District", url: "music/wishingdead.mp3", img: "images/mi21.jpg" },
-    { tittle: "To Live Is To Suffer", artist: "Blacklite District", url: "music/toliveistosuffer.mp3", img: "images/mi17.jpg" },
-    { tittle: "The Struggle Is Real", artist: "Blacklite District", url: "music/thestruggleisreal.mp3", img: "images/mi21.jpg" },
-    { tittle: "Over This", artist: "Blacklite District", url: "music/overthis.mp3", img: "images/mi17.jpg" },
-    { tittle: "One Way", artist: "Blacklite District", url: "music/oneway.mp3", img: "images/mi21.jpg" },
-    { tittle: "More Than Ready", artist: "Blacklite District", url: "music/morethanready.mp3", img: "images/mi21.jpg" },
-    { tittle: "Live Another Day", artist: "Blacklite District", url: "music/liveanotherday.mp3", img: "images/mi17.jpg" },
-    { tittle: "Just So You Know", artist: "Blacklite District", url: "music/justsoyouknow.mp3", img: "images/mi21.jpg" },
-    { tittle: "I Gambled And Won", artist: "Blacklite District", url: "music/igambledandwon.mp3", img: "images/mi17.jpg" },
-    { tittle: "I Dont Really Care", artist: "Blacklite District", url: "music/idontreallycare.mp3", img: "images/mi17.jpg" },
-    { tittle: "Hard Pill To Swallow", artist: "Blacklite District", url: "music/hardpilltoswallow.mp3", img: "images/mi21.jpg" },
-    { tittle: "Go Home", artist: "Blacklite District", url: "music/gohome.mp3", img: "images/mi17.jpg" },
-    { tittle: "Falling", artist: "Blacklite District", url: "music/Falling.mp3", img: "images/mi21.jpg" },
-    { tittle: "Cold As Ice", artist: "Blacklite District", url: "music/coldasice.mp3", img: "images/mi31.jpg" },
-    { tittle: "Be Afraid", artist: "Blacklite District", url: "music/beafraid.mp3", img: "images/mi21.jpg" },
-    { tittle: "1 Of A Kind", artist: "Blacklite District", url: "music/1ofakind.mp3", img: "images/mi17.jpg" },
-    { tittle: "YALLA", artist: "Ilyaugust", url: "music/YALLA.mp3", img: "images/mi47.jpg" },
-    { tittle: "Night Life", artist: "Ilyaugust", url: "music/NIGHTLIFE.mp3", img: "images/mi36.jpg" },
-    { tittle: "Trufle", artist: "Oliver Gigon", url: "music/Trufle.mp3", img: "images/mi45.jpg" },
-    { tittle: "Łatwy Kąsek", artist: "Oliver Gigon", url: "music/latwykasek.mp3", img: "images/mi32.jpg" },
-    { tittle: "Dla Fabuły", artist: "Oliver Gigon", url: "music/dlafabuly.mp3", img: "images/mi25.jpg" },
-    { tittle: "Taste Your Love", artist: "I Have No Fucking Idea", url: "music/tasteyourlove.mp3", img: "images/mi44.jpg" },
-    { tittle: "What Lurks on Channel X", artist: "Rob Zombie", url: "music/whatlurksonchannelx.mp3", img: "images/mi24.jpg" },
-    { tittle: "The Ballad OF Resurrection Joe And Rose A Whore", artist: "Rob Zombie", url: "music/theballadofresurrectionjoeandrosawhore.mp3", img: "images/mi44.jpg" },
-    { tittle: "Super Beast", artist: "Rob Zombie", url: "music/superbeast.mp3", img: "images/mi44.jpg" },
-    { tittle: "Spook Show Baby", artist: "Rob Zombie", url: "music/spookshowbaby.mp3", img: "images/mi44.jpg" },
-    { tittle: "Return Of The Phantom Stranger", artist: "Rob Zombie", url: "music/returnofthephantomstranger.mp3", img: "images/mi44.jpg" },
-    { tittle: "Meet The Creeper", artist: "Rob Zombie", url: "music/meetthecreeper.mp3", img: "images/mi44.jpg" },
-    { tittle: "Living Dead Girl", artist: "Rob Zombie", url: "music/livingdeadgirl.mp3", img: "images/mi44.jpg" },
-    { tittle: "How To Make A Monster", artist: "Rob Zombie", url: "music/howtoamkeamonster.mp3", img: "images/mi44.jpg" },
-    { tittle: "Break Stuff", artist: "Limp Bizkit", url: "music/breakstuff.mp3", img: "images/mi18.jpg" },
-    { tittle: "Super Psycho Love", artist: "Simon Curtis", url: "music/superpsycholove.mp3", img: "images/mi43.jpg" },
-    { tittle: "CARNAL", artist: "Tequya", url: "music/CARNAL.mp3", img: "images/mi19.jpg" },
-    { tittle: "HEARTLOCK", artist: "Tequya", url: "music/HEARTLOCK.mp3", img: "images/mi28.jpg" },
-    { tittle: "Perfect Pair", artist: "R.L Beats", url: "music/perfectpair.mp3", img: "images/mi38.jpg" },
-    { tittle: "Scream And Shout Remix", artist: "Some No Name", url: "music/screamandshout.mp3", img: "images/mi41.jpg" },
-    { tittle: "Snow Eden", artist: "Dorian", url: "music/snoweden.mp3", img: "images/mi42.jpg" },
-    { tittle: "Death lungs", artist: "Dorian", url: "music/deathlungs.mp3", img: "images/mi23.jpg" },
-    { tittle: "House Of Ballons", artist: "The Weekend", url: "music/houseofballons.mp3", img: "images/mi29.jpg" },
-    { tittle: "Come As You Are", artist: "Nirvana", url: "music/comeasyouare.mp3", img: "images/mi22.jpg" },
-    { tittle: "Lithium", artist: "Nirvana", url: "music/lithium.mp3", img: "images/mi22.jpg" },
-    { tittle: "Smells Like Teen Spirit", artist: "Nirvana", url: "music/smellsliketeensoirit.mp3", img: "images/mi22.jpg" },
-    { tittle: "Nero Forte", artist: "Slipknot", url: "music/neroforte.mp3", img: "images/mi35.jpg" },
-    { tittle: "Duality", artist: "Slipknot", url: "music/Duality.mp3", img: "images/mi26.jpg" },
-    { tittle: "Eyeless", artist: "Slipknot", url: "music/Eyeless.mp3", img: "images/mi27.jpg" },
-     { tittle: "People = Shit", artist: "Slipknot", url: "music/peopleshit.mp3", img: "images/mi37.jpg" },
-     { tittle: "Puppeteer", artist: "Noturtype", url: "music/puppeteer.mp3", img: "images/mi40.jpg" },
-     { tittle: "Hypocrite", artist: "Noturtype", url: "music/Hypocrite.mp3", img: "images/mi30.jpg" },
-     { tittle: "Hypocritical", artist: "Noturtype", url: "music/Hypocritical.mp3", img: "images/mi40.jpg" },
-      { tittle: "Like That", artist: "Loveshy", url: "music/likethat.mp3", img: "images/mi33.jpg" },
-    
+    { 
+        title: "Born To Sin", 
+        artist: "Desire4u", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/borntosin.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi17.jpg"
+    },
+    { 
+        title: "I call your name", 
+        artist: "Desire4u", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/icallyourname.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi11.jpg" 
+    },
+
+    { 
+        title: "Twin Flame", 
+        artist: "Desire4u", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/twinflames.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi12.jpg" 
+    },
+    { 
+        title: "Endlessly", 
+        artist: "Desire4u", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/endlessly.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi16.jpg" 
+    },
+    { 
+        title: "Fallen Angels", 
+        artist: "Desire4u", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/fallenangels.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi10.jpg" 
+    },
+    { 
+        title: "All Mine", 
+        artist: "Whatsaheart", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/allmine.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi7.jpg" 
+    },
+    { 
+        title: "Sky Falling For You", 
+        artist: "Whatsaheart", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/skyfallingforyou.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi8.jpg" 
+    },
+    { 
+        title: "Drown", 
+        artist: "Whatsaheart", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/drown.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi1.jpg" 
+    },{ 
+        title: "For Her", 
+        artist: "Whatsaheart", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/forher.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi2.jpg" 
+    },
+    { 
+        title: "Howlling", 
+        artist: "Whatsaheart", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/howling.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi4.jpg" 
+    },
+    { 
+        title: "Love Sick", 
+        artist: "Whatsaheart", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/lovesick.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi5.jpg" 
+    },
+    { 
+        title: "Snakelike", 
+        artist: "Whatsaheart", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/snakelike.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi3.jpg" 
+    },
+    { 
+        title: "Taking Over Me", 
+        artist: "Whatsaheart", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/takingoverme.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi6.jpg" 
+    },
+    { 
+        title: "Vxlentine", 
+        artist: "Whatsaheart", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/vxlentine.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi46.jpg" 
+    },
+    { 
+        title: "My Own Summer", 
+        artist: "Deftones", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/myownsummer.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi34.jpg" 
+    },
+    { 
+        title: "Wishing Dead", 
+        artist: "Blacklite District", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/wishingdead.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi21.jpg" 
+    },
+    { 
+        title: "To Live Is To Suffer", 
+        artist: "Blacklite District", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/toliveistosuffer.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi17.jpg" 
+    },
+    { 
+        title: "The Struggle Is Real", 
+        artist: "Blacklite District", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/thestruggleisreal.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi21.jpg" 
+    },
+    { 
+        title: "Over This", 
+        artist: "Blacklite District", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/overthis.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi17.jpg" 
+    },
+    { 
+        title: "One Way", 
+        artist: "Blacklite District", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/oneway.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi21.jpg" 
+    },
+    { 
+        title: "More Than ready", 
+        artist: "Blacklite District", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/morethanready.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi21.jpg" 
+    },
+    { 
+        title: "Live Another Day", 
+        artist: "Blacklite District", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/liveanotherday.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi17.jpg" 
+    },
+    { 
+        title: "Just So You Know", 
+        artist: "Blacklite District", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/justsoyouknow.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi21.jpg" 
+    },
+    { 
+        title: "I Gambled And Won", 
+        artist: "Blacklite District", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/igambledandwon.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi17.jpg" 
+    },
+    { 
+        title: "I Dont Really Care", 
+        artist: "Blacklite District", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/idontreallycare.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi17.jpg" 
+    },
+    { 
+        title: "Hard Pill To Swallow", 
+        artist: "Blacklite District", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/hardpilltoswallow.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi21.jpg" 
+    },
+    { 
+        title: "Go Home", 
+        artist: "Blacklite District", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/gohome.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi17.jpg" 
+    },
+    { 
+        title: "Falling", 
+        artist: "Blacklite District", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/Falling.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi21.jpg" 
+    },
+    { 
+        title: "Cold As Ice", 
+        artist: "Blacklite District", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/coldasice.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi31.jpg" 
+    },
+    { 
+        title: "Be Afraid", 
+        artist: "Blacklite District", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/beafraid.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi21.jpg" 
+    },
+    { 
+        title: "1 Of A Kind", 
+        artist: "Blacklite District", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/1ofakind.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi17.jpg" 
+    },
+    { 
+        title: "YALLA", 
+        artist: "Ilyaugust", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/YALLA.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi47.jpg" 
+    },
+    { 
+        title: "Night Life", 
+        artist: "Ilyaugust", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/NIGHTLIFE.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi36.jpg" 
+    },
+    { 
+        title: "Trufle", 
+        artist: "Oliver Gigon", 
+        url: "", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi45.jpg" 
+    },
+    { 
+        title: "Łatwy Kąsek", 
+        artist: "Oliver Gigon", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/latwykasek.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi32.jpg" 
+    },
+    { 
+        title: "Dla Fabuły", 
+        artist: "Oliver Gigon", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/dlafabuly.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi25.jpg" 
+    },
+    { 
+        title: "Taste Your Love", 
+        artist: "I Have No Fucking Idea", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/tasteyourlove.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi44.jpg" 
+    },
+    { 
+        title: "What Lurks on Channel X", 
+        artist: "Rob Zombie", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/whatlurksonchannelx.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi24.jpg" 
+    },
+    { 
+        title: "The Ballad Of Resurrection Joe And Rose A Whore", 
+        artist: "Rob Zombie", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/theballadofresurrectionjoeandrosawhore.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi24.jpg" 
+    },
+    { 
+        title: "Demonoid Phenomenon", 
+        artist: "Rob Zombie", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/demonoidphenomenon.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi24.jpg" 
+    },
+    { 
+        title: "Super Beas", 
+        artist: "Rob Zombie", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/superbeast.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi24.jpg" 
+    },
+    { 
+        title: "Spook Show Baby", 
+        artist: "Rob Zombie", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/spookshowbaby.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi24.jpg" 
+    },
+    { 
+        title: "Return Of The Phantom Stranger", 
+        artist: "Rob Zombie", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/returnofthephantomstranger.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi24.jpg" 
+    },
+    { 
+        title: "Meet The Creeper", 
+        artist: "Rob Zombie", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/meetthecreeper.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi24.jpg" 
+    },
+    { 
+        title: "Living Dead Girl", 
+        artist: "Rob Zombie", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/livingdeadgirl.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi24.jpg" 
+    },
+    { 
+        title: "How To Make A Monster", 
+        artist: "Rob Zombie", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/howtomakeamonster.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi24.jpg" 
+    },
+    { 
+        title: "Dragula", 
+        artist: "Rob Zombie", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/Dragula.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi24.jpg" 
+    },
+    { 
+        title: "Break Stuff", 
+        artist: "Limp Bizkit", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/breakstuff.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi18.jpg" 
+    },
+    { 
+        title: "Super Psycho Love", 
+        artist: "Simon Curtis", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/superpsycholove.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi43.jpg" 
+    },
+    { 
+        title: "CARNAL", 
+        artist: "Tequya", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/CARNAL.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi19.jpg" 
+    },
+    { 
+        title: "HEARTLOCK", 
+        artist: "Tequya", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/HEARTLOCK.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi28.jpg" 
+    },
+    { 
+        title: "Perfect Pair", 
+        artist: "R.L Beats", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/perfectpair.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi38.jpg" 
+    },
+    { 
+        title: "Pretty Please", 
+        artist: "I dont know", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/prettyplease.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi39.jpg" 
+    },
+    { 
+        title: "Scream And Shout Remix", 
+        artist: "Some No Name", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/screamandshout.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi41.jpg" 
+    },
+    { 
+        title: "Snow Eden", 
+        artist: "Dorian", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/snoweden.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi42.jpg" 
+    },
+    { 
+        title: "Death Lungs", 
+        artist: "Dorian", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/deathlungs.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi23.jpg" 
+    },
+    { 
+        title: "House Of Ballons", 
+        artist: "The Weekend", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/houseofballons.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi29.jpg" 
+    },
+    { 
+        title: "Come As You Are", 
+        artist: "Nirvana", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/comeasyouare.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi22.jpg" 
+    },
+    { 
+        title: "Lithium", 
+        artist: "Nirvana", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/Lithium.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi22.jpg" 
+    },
+    { 
+        title: "Smells Like Teen Spirit", 
+        artist: "Nirvana", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/smellsliketeenspirit.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi22.jpg" 
+    },
+    { 
+        title: "Nero Forte", 
+        artist: "Slipknot", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/neroforte.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi35.jpg" 
+    },
+    { 
+        title: "Duality", 
+        artist: "Slipknot", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/Duality.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi26.jpg" 
+    },
+    { 
+        title: "Eyeless", 
+        artist: "Slipknot", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/Eyeless.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi27.jpg" 
+    },
+
+    { 
+        title: "People = Shit", 
+        artist: "Slipknot", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/peopleshit.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi37.jpg" 
+    },
+    { 
+        title: "Puppeteer", 
+        artist: "Noturtype", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/puppeteer.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi40.jpg" 
+    },
+    { 
+        title: "Hypocrite", 
+        artist: "Noturtype", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/Hypocrite.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi30.jpg" 
+    },
+    { 
+        title: "Hypocritical", 
+        artist: "Noturtype", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/Hypocritical.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi40.jpg" 
+    },
+    { 
+        title: "Like That", 
+        artist: "Loveshy", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/likethat.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi33.jpg" 
+    },
+
 ];
 
 let currentTrackIndex = -1;
