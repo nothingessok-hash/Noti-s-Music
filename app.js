@@ -200,7 +200,7 @@ const tracks = [
     { 
         title: "Trufle", 
         artist: "Oliver Gigon", 
-        url: "", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/Trufle.mp3", 
         img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi45.jpg" 
     },
     { 
@@ -240,7 +240,7 @@ const tracks = [
         img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi24.jpg" 
     },
     { 
-        title: "Super Beas", 
+        title: "Super Beast", 
         artist: "Rob Zombie", 
         url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/superbeast.mp3", 
         img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi24.jpg" 
