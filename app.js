@@ -53,7 +53,7 @@ const tracks = [
         url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/forher.mp3", 
         img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi2.jpg" 
     },
-    { 
+    {
         title: "Howlling", 
         artist: "Whatsaheart", 
         url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/howling.mp3", 
@@ -64,6 +64,12 @@ const tracks = [
         artist: "Whatsaheart", 
         url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/lovesick.mp3", 
         img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi5.jpg" 
+    },
+    {
+        title: "Safeword", 
+        artist: "Whatsaheart", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/safeword.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi50.jpg" 
     },
     { 
         title: "Snakelike", 
@@ -82,6 +88,12 @@ const tracks = [
         artist: "Whatsaheart", 
         url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/vxlentine.mp3", 
         img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi46.jpg" 
+    },
+    {
+        title: "Psycho", 
+        artist: "Mia Rodrizgues", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/Psycho.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/im53.jpg" 
     },
     { 
         title: "My Own Summer", 
@@ -408,6 +420,56 @@ const tracks = [
         url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/likethat.mp3", 
         img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi33.jpg" 
     },
+    { 
+        title: "Pyscho Love", 
+        artist: "Simon Curtis", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/Super%20Psycho%20Love%20(2024%20Remaster).mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi48.jpg" 
+    },
+    { 
+        title: "Shut Me Up", 
+        artist: "MSI", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/Shut%20Me%20Up.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi54.jpg" 
+    },
+    { 
+        title: "Lights Out", 
+        artist: "MSI", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/Lights%20Out.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi54.jpg" 
+    },
+    { 
+        title: "For The Love Of God", 
+        artist: "MSI", 
+        url: "hhttps://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/For%20The%20Love%20of%20God.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi55.jpg" 
+    },
+    { 
+        title: "Stupid Mf", 
+        artist: "MSI", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/Stupid%20MF.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi56.jpg." 
+    },
+    { 
+        title: "This hurts", 
+        artist: "MSI", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/This%20Hurts.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi56.jpg" 
+    },
+     { 
+        title: "It Only Gets Worse", 
+        artist: "MSI", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/It%20Gets%20Worse.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/im57.jpg" 
+    },
+      { 
+        title: "Whenevr I may roam", 
+        artist: "Metalica", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/Wherever%20I%20May%20Roam%20-%20Remastered%202021.mp3", 
+        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi49.jpg" 
+    },
+
+
 
 ];
 
