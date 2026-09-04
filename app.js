@@ -300,12 +300,6 @@ const tracks = [
         img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi18.jpg" 
     },
     { 
-        title: "Super Psycho Love", 
-        artist: "Simon Curtis", 
-        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/superpsycholove.mp3", 
-        img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi43.jpg" 
-    },
-    { 
         title: "CARNAL", 
         artist: "Tequya", 
         url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/CARNAL.mp3", 
@@ -441,7 +435,7 @@ const tracks = [
     { 
         title: "For The Love Of God", 
         artist: "MSI", 
-        url: "hhttps://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/For%20The%20Love%20of%20God.mp3", 
+        url: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/music/For%20The%20Love%20of%20God.mp3", 
         img: "https://wwwhllpfwubcnfxrgsmz.supabase.co/storage/v1/object/public/music-player/images/mi55.jpg" 
     },
     { 

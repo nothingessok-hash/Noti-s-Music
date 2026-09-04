@@ -1,362 +1,643 @@
+/* ==========================================================================
+   CYBER-ROCK / SYS.DECK - GLOBAL SYSTEM VARS
+   ========================================================================== */
+:root {
+    --black-void: #020106;
+    --black-panel: #0a0514;
+    --purple-core: #18032b;
+    --purple-deep: #2d004d;
+    --purple-mid: #6b00b3;
+    --purple-neon: #d946ef;
+    --purple-cyber: #a855f7;
+    --purple-light: #f0abfc;
+    
+    --text-main: #ffffff;
+    --text-sub: #a78bfa;
+    --text-dim: #5b4a78;
+    
+    --cyber-border: rgba(217, 70, 239, 0.3);
+    --cyber-glow: 0 0 15px rgba(217, 70, 239, 0.4);
+    --cyber-glow-heavy: 0 0 30px rgba(217, 70, 239, 0.8), 0 0 10px #ffffff;
+    
+    --clip-angle-sm: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+    --clip-angle-lg: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 0 100%);
+    --clip-angle-reverse: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px);
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Consolas', 'Orbitron', 'Segoe UI', monospace, sans-serif;
 }
 
+/* ==========================================================================
+   BACKGROUND: CYBER GRID & SCANLINES
+   ========================================================================== */
 body {
-    background-color: #0b0713; 
-    color: #ffffff;
+    background-color: var(--black-void);
+    background-image: 
+        linear-gradient(rgba(168, 85, 247, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(168, 85, 247, 0.05) 1px, transparent 1px),
+        radial-gradient(circle at 50% 30%, var(--purple-core) 0%, var(--black-void) 80%);
+    background-size: 30px 30px, 30px 30px, 100% 100%;
+    color: var(--text-main);
     overflow: hidden;
     height: 100vh;
+    position: relative;
+}
+
+/* CRT Scanline Overlay */
+body::before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+    background-size: 100% 4px;
+    z-index: 999;
+    pointer-events: none;
+    opacity: 0.6;
 }
 
 .container {
     display: flex;
-    height: calc(100vh - 95px);
+    height: calc(100vh - 100px);
 }
 
+/* ==========================================================================
+   HUD SIDEBAR PANEL
+   ========================================================================== */
 .sidebar {
-    width: 240px;
-    background-color: #050308;
-    padding: 24px;
+    width: 270px;
+    background: rgba(10, 5, 20, 0.95);
+    padding: 28px 20px;
     display: flex;
     flex-direction: column;
-    gap: 24px;
-    border-right: 2px solid #8a2be2;
-    box-shadow: 2px 0 15px rgba(138, 43, 226, 0.3); 
+    gap: 32px;
+    border-right: 2px solid var(--purple-neon);
+    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.8), 2px 0 15px rgba(217, 70, 239, 0.3);
+    position: relative;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 30px), calc(100% - 30px) 100%, 0 100%);
+    z-index: 10;
 }
 
+/* Cyber Terminal Header / Logo */
 .logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: #bc13fe; 
-    text-shadow: 0 0 10px rgba(188, 19, 254, 0.6); 
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--text-main);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 0px var(--purple-mid), -2px -2px 0px var(--purple-neon);
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo::before {
+    content: '[SYS.ROCK]';
+    font-size: 10px;
+    position: absolute;
+    top: -12px;
+    left: 0;
+    color: var(--purple-neon);
+    letter-spacing: 1px;
 }
 
 .sidebar nav {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 12px;
 }
 
 .sidebar nav a {
-    color: #a39bb4;
+    color: var(--text-sub);
     text-decoration: none;
-    font-weight: 600;
-    transition: all 0.3s ease;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 12px 16px;
+    background: rgba(45, 0, 77, 0.2);
+    border-left: 3px solid transparent;
+    clip-path: var(--clip-angle-sm);
+    transition: all 0.2s cubic-bezier(0.1, 0.9, 0.2, 1);
 }
 
-.sidebar nav a:hover, .sidebar nav a.active {
-    color: #bc13fe;
-    transform: translateX(5px); 
+.sidebar nav a:hover {
+    color: #ffffff;
+    background: rgba(217, 70, 239, 0.15);
+    border-left-color: var(--purple-neon);
+    transform: translateX(8px);
+    box-shadow: var(--cyber-glow);
 }
 
+.sidebar nav a.active {
+    color: #ffffff;
+    background: linear-gradient(90deg, var(--purple-deep) 0%, rgba(217, 70, 239, 0.2) 100%);
+    border-left-color: var(--purple-neon);
+    box-shadow: -5px 0 15px rgba(217, 70, 239, 0.4);
+}
+
+/* ==========================================================================
+   MAIN CONTENT & CYBER TRACK LIST
+   ========================================================================== */
 .main-content {
     flex: 1;
-    background: linear-gradient(to bottom, #160f24, #0b0713);
-    padding: 32px;
-    overflow-y: auto; 
+    padding: 36px 40px;
+    overflow-y: auto;
+    position: relative;
 }
 
+/* Cyber Terminal Search Input */
 .search-container {
-    margin-bottom: 32px;
+    margin-bottom: 36px;
+    position: relative;
+}
+
+.search-container::before {
+    content: 'SEARCH_MODULE //';
+    position: absolute;
+    top: -16px;
+    left: 4px;
+    font-size: 9px;
+    color: var(--purple-neon);
+    letter-spacing: 1px;
 }
 
 #search-bar {
     width: 100%;
-    max-width: 400px;
-    padding: 12px 20px;
-    background-color: #1c142c;
-    border: 1px solid #4b2680;
-    border-radius: 20px;
-    color: white;
-    font-size: 14px;
+    max-width: 450px;
+    padding: 12px 18px;
+    background: rgba(15, 6, 30, 0.8);
+    border: 1px solid var(--purple-mid);
+    border-left: 4px solid var(--purple-neon);
+    clip-path: var(--clip-angle-sm);
+    color: var(--purple-light);
+    font-size: 13px;
     outline: none;
-    transition: all 0.3s ease;
+    transition: all 0.25s ease;
 }
 
 #search-bar:focus {
-    border-color: #bc13fe;
-    box-shadow: 0 0 12px rgba(188, 19, 254, 0.6);
+    border-color: var(--purple-neon);
+    background: rgba(28, 5, 50, 0.9);
+    box-shadow: var(--cyber-glow-heavy);
+    max-width: 500px;
 }
 
 header h1 {
-    font-size: 32px;
+    font-size: 40px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    text-transform: uppercase;
     margin-bottom: 24px;
+    color: #ffffff;
+    text-shadow: 3px 3px 0px var(--purple-deep), 0 0 15px rgba(217, 70, 239, 0.5);
+    border-bottom: 1px dashed var(--cyber-border);
+    padding-bottom: 12px;
 }
 
 .song-section h2 {
-    font-size: 22px;
-    margin-bottom: 16px;
-    color: #a39bb4;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+    color: var(--purple-neon);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.song-section h2::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--purple-neon), transparent);
 }
 
 .song-list {
     display: flex;
-    flex-direction: column; 
-    gap: 10px;
-    width: 100%;
-    flex-wrap: nowrap;     
-    overflow-y: visible;   
+    flex-direction: column;
+    gap: 12px;
 }
 
+/* Cyber Song Deck Items */
 .song-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 14px 20px;
-    background-color: rgba(28, 20, 44, 0.4);
-    border: 1px solid transparent;
-    border-radius: 8px;
+    padding: 12px 20px;
+    background: linear-gradient(90deg, rgba(20, 8, 40, 0.8) 0%, rgba(10, 5, 20, 0.6) 100%);
+    border: 1px solid var(--border-subtle, rgba(217, 70, 239, 0.15));
+    border-left: 3px solid var(--purple-mid);
+    clip-path: var(--clip-angle-sm);
     cursor: pointer;
-    transition: all 0.25s ease;
+    transition: all 0.15s ease-out;
+    position: relative;
 }
 
+/* Hover Glitch & Lighting */
 .song-item:hover {
-    background-color: #1c142c;
-    border-color: #8a2be2;
-    transform: translateY(-2px) scale(1.01);
-    box-shadow: 0 5px 15px rgba(138, 43, 226, 0.2);
+    background: linear-gradient(90deg, var(--purple-deep) 0%, rgba(45, 0, 77, 0.8) 100%);
+    border-left-color: var(--purple-neon);
+    transform: scale(1.01) translateX(6px);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.8), var(--cyber-glow);
 }
 
 .song-item.playing {
-    background-color: #1c142c;
-    border-color: #bc13fe;
-    box-shadow: 0 0 15px rgba(188, 19, 254, 0.5);
-    transform: scale(1.01);
+    background: linear-gradient(90deg, var(--purple-deep) 0%, rgba(217, 70, 239, 0.25) 100%);
+    border: 1px solid var(--purple-neon);
+    border-left: 5px solid var(--purple-neon);
+    box-shadow: var(--cyber-glow);
+    animation: CyberPulse 2s infinite alternate;
+}
+
+@keyframes CyberPulse {
+    0% { box-shadow: 0 0 10px rgba(217, 70, 239, 0.3); }
+    100% { box-shadow: 0 0 25px rgba(217, 70, 239, 0.7); }
 }
 
 .track-info {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 20px;
 }
 
 .track-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 4px;
+    width: 44px;
+    height: 44px;
     object-fit: cover;
+    border: 1px solid var(--purple-neon);
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 80% 100%, 0 100%);
+    filter: saturate(1.2) contrast(1.1);
 }
 
 .track-title {
-    font-weight: 500;
+    font-weight: 800;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+    color: var(--text-main);
 }
 
 .track-artist {
-    font-size: 14px;
-    color: #a39bb4;
+    font-size: 12px;
+    color: var(--text-sub);
+    letter-spacing: 1px;
 }
 
+/* Play Icon Glitch State */
 .play-icon {
-    color: #bc13fe;
+    color: var(--purple-neon);
+    font-size: 18px;
     opacity: 0;
-    transition: opacity 0.2s;
+    transform: scale(0.5);
+    transition: all 0.2s cubic-bezier(0.1, 0.9, 0.2, 1);
 }
 
 .song-item:hover .play-icon {
     opacity: 1;
+    transform: scale(1.1);
+    text-shadow: 0 0 10px var(--purple-neon);
 }
 
 .song-item.playing .play-icon {
     opacity: 1;
     color: #ffffff;
-    text-shadow: 0 0 8px #bc13fe;
+    text-shadow: var(--cyber-glow-heavy);
 }
 
+/* ==========================================================================
+   HEAVY CYBER-DECK MUSIC PLAYER BAR
+   ========================================================================== */
 .player-bar {
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
-    height: 95px;
-    background-color: #050308;
-    border-top: 2px solid #8a2be2;
-    box-shadow: 0 -2px 15px rgba(138, 43, 226, 0.3);
+    height: 100px;
+    background: rgba(6, 2, 12, 0.95);
+    border-top: 2px solid var(--purple-neon);
+    box-shadow: 0 -10px 30px rgba(0,0,0,0.9), 0 -2px 20px var(--purple-neon);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 32px;
+    padding: 0 40px;
+    z-index: 1000;
+    clip-path: polygon(0 20px, 20px 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 0 100%);
+}
+
+/* Top Glow Strip on Player */
+.player-bar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: var(--purple-neon);
+    box-shadow: 0 0 15px var(--purple-neon), 0 0 30px var(--purple-neon);
 }
 
 .now-playing {
-    width: 30%;
+    width: 25%;
+    border-left: 2px solid var(--purple-mid);
+    padding-left: 15px;
 }
 
 #player-title {
-    font-size: 14px;
-    font-weight: 500;
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--text-main);
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 #player-artist {
-    font-size: 12px;
-    color: #a39bb4;
+    font-size: 11px;
+    color: var(--purple-neon);
+    letter-spacing: 1.5px;
 }
 
+/* Controls Section */
 .player-controls-container {
-    width: 40%;
+    width: 45%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
+    gap: 10px;
 }
 
 .control-buttons {
     display: flex;
     align-items: center;
-    gap: 24px;
+    gap: 30px;
 }
 
 .control-btn {
     background: none;
     border: none;
-    color: #a39bb4;
-    font-size: 20px;
+    color: var(--text-sub);
+    font-size: 18px;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.15s ease;
 }
 
 .control-btn:hover {
-    color: #bc13fe;
-    transform: scale(1.1);
+    color: var(--purple-neon);
+    transform: scale(1.2);
+    filter: drop-shadow(0 0 8px var(--purple-neon));
 }
 
+/* Cyber Rock Hex Play Button */
 .play-main {
-    font-size: 24px;
-    color: #050308;
-    background-color: #ffffff;
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
+    font-size: 20px;
+    color: var(--black-void);
+    background: var(--purple-neon);
+    width: 48px;
+    height: 48px;
+    clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
     display: flex;
     justify-content: center;
     align-items: center;
     padding-left: 3px;
+    box-shadow: var(--cyber-glow-heavy);
+    transition: all 0.2s ease;
+    cursor: pointer;
 }
 
 .play-main:hover {
-    background-color: #bc13fe;
-    color: #ffffff;
-    box-shadow: 0 0 10px #bc13fe;
-    transform: scale(1.05);
+    background: #ffffff;
+    color: var(--purple-deep);
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 0 25px #ffffff, 0 0 40px var(--purple-neon);
 }
 
+/* Cyber Timeline & Slider */
 .timeline-container {
     width: 100%;
-    max-width: 500px;
     display: flex;
     align-items: center;
-    gap: 12px;
-    font-size: 12px;
-    color: #a39bb4;
+    gap: 14px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--purple-neon);
 }
 
 #seek-slider {
     flex: 1;
-    height: 4px;
-    background-color: #2c1e47;
-    border-radius: 2px;
+    height: 6px;
+    background: var(--purple-deep);
+    border: 1px solid var(--purple-mid);
     outline: none;
     cursor: pointer;
     appearance: none;
     -webkit-appearance: none;
-    transition: background-color 0.2s;
-}
-
-#seek-slider:hover {
-    background-color: #4b2680;
 }
 
 #seek-slider::-webkit-slider-thumb {
     -webkit-appearance: none;
-    appearance: none;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background-color: #ffffff;
-    box-shadow: 0 0 8px #bc13fe;
-    transition: transform 0.1s;
+    width: 14px;
+    height: 14px;
+    background: #ffffff;
+    border: 2px solid var(--purple-neon);
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    box-shadow: 0 0 10px var(--purple-neon);
+    transition: transform 0.1s ease;
 }
 
 #seek-slider::-webkit-slider-thumb:hover {
-    transform: scale(1.3);
-    background-color: #bc13fe;
+    transform: scale(1.5);
+    background: var(--purple-neon);
 }
 
 .volume-placeholder {
-    width: 30%;
+    width: 25%;
+    display: flex;
+    justify-content: flex-end;
 }
 
-/* Base style: Dark purple and slightly see-through when unliked */
+/* Animated Electric Like Button */
 .like-btn {
-    font-size: 18px;
-    color: #4b2680; 
+    font-size: 20px;
+    color: var(--purple-deep);
     cursor: pointer;
     transition: all 0.2s ease;
-    opacity: 0.6;
+    filter: drop-shadow(0 0 2px var(--purple-mid));
 }
 
-/* Neon Pink Active Liked Glow State */
-/* When JavaScript adds the class ".liked" to a heart, it triggers this: */
+.like-btn:hover {
+    color: var(--purple-light);
+    transform: scale(1.2);
+}
+
 .like-btn.liked {
-    color: #ff007f !important; 
-    opacity: 1 !important;
-    text-shadow: 0 0 10px #ff007f, 0 0 20px #ff007f;
-    transform: scale(1.1);
+    color: #ff0055 !important;
+    text-shadow: 0 0 10px #ff0055, 0 0 20px #ff0055;
+    animation: RockSpike 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
+@keyframes RockSpike {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.5) rotate(-15deg); }
+    100% { transform: scale(1.1); }
+}
+
+/* ==========================================================================
+   RESPONSIVE CYBER DECK LAYOUT
+   ========================================================================== */
 @media screen and (max-width: 768px) {
     .container {
         flex-direction: column;
-        height: calc(100vh - 110px); 
+        height: calc(100vh - 120px);
     }
+
     .sidebar {
         width: 100%;
         height: auto;
         padding: 16px;
+        clip-path: none;
         border-right: none;
-        border-bottom: 2px solid #8a2be2; 
-        box-shadow: 0 2px 15px rgba(138, 43, 226, 0.3);
-        flex-direction: row; 
+        border-bottom: 2px solid var(--purple-neon);
+        flex-direction: row;
         justify-content: space-between;
         align-items: center;
     }
+
     .sidebar nav {
-        flex-direction: row; 
-        gap: 20px;
+        flex-direction: row;
+        gap: 8px;
     }
-    .stats-container {
-        display: none; 
+
+    .sidebar nav a {
+        padding: 8px 10px;
+        font-size: 11px;
     }
+
     .main-content {
         padding: 20px 16px;
     }
+
     header h1 {
-        font-size: 26px; 
+        font-size: 26px;
     }
-    #search-bar {
-        max-width: 100%; 
-    }
+
     .player-bar {
-        height: 110px;
-        flex-direction: column; 
-        justify-content: center;
-        gap: 8px;
-        padding: 12px;
+        height: 120px;
+        padding: 12px 16px;
+        flex-direction: column;
+        clip-path: none;
     }
+
     .now-playing {
         width: 100%;
-        text-align: center; 
+        text-align: center;
+        border-left: none;
+        padding-left: 0;
     }
+
     .player-controls-container {
         width: 100%;
     }
-    .timeline-container {
-        max-width: 100%;
-    }
+
     .volume-placeholder {
-        display: none; 
+        display: none;
     }
+}
+
+/* ==========================================================================
+   ELECTRIC POWER-BOOST LIKE ANIMATIONS
+   ========================================================================== */
+
+/* Heart Flicker & Pulsing Animation */
+@keyframes heartPowerBoost {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    15% {
+        transform: scale(1.5) rotate(-12deg);
+        opacity: 0.2; /* Cyber flicker off */
+        filter: drop-shadow(0 0 20px #ff0055) drop-shadow(0 0 8px #ffffff);
+    }
+    30% {
+        transform: scale(0.85) rotate(6deg);
+        opacity: 1;
+        filter: drop-shadow(0 0 5px #ff0055);
+    }
+    45% {
+        transform: scale(1.4) rotate(-6deg);
+        opacity: 0.3; /* Cyber flicker off */
+        filter: drop-shadow(0 0 30px #ff0055) drop-shadow(0 0 15px #ffffff);
+    }
+    65% {
+        transform: scale(0.95);
+        opacity: 1;
+        filter: drop-shadow(0 0 15px #ff0055);
+    }
+    80% {
+        transform: scale(1.15);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.1);
+        opacity: 1;
+        filter: drop-shadow(0 0 10px #ff0055);
+    }
+}
+
+/* Electricity Surge Across the Whole Song Bar */
+@keyframes songBarElectricSurge {
+    0% {
+        border-color: var(--purple-mid);
+        box-shadow: none;
+    }
+    15% {
+        background: linear-gradient(90deg, rgba(255, 0, 85, 0.4) 0%, rgba(217, 70, 239, 0.6) 50%, rgba(255, 255, 255, 0.8) 100%);
+        border-color: #ffffff;
+        box-shadow: 0 0 35px #ff0055, inset 0 0 20px #ffffff;
+        transform: scale(1.02) translateX(4px);
+    }
+    30% {
+        background: rgba(20, 8, 40, 0.9);
+        border-color: var(--purple-neon);
+        box-shadow: 0 0 5px #ff0055;
+    }
+    45% {
+        background: linear-gradient(90deg, rgba(255, 0, 85, 0.5) 0%, rgba(255, 255, 255, 0.9) 100%);
+        border-color: #ffffff;
+        box-shadow: 0 0 45px #ff0055, 0 0 15px #ffffff, inset 0 0 25px #ff0055;
+        transform: scale(1.02) translateX(4px);
+    }
+    100% {
+        border-color: var(--purple-neon);
+        box-shadow: 0 0 15px rgba(217, 70, 239, 0.4);
+    }
+}
+
+/* Heart Base Button */
+.like-btn {
+    font-size: 20px;
+    color: var(--purple-deep);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    filter: drop-shadow(0 0 2px var(--purple-mid));
+}
+
+.like-btn:hover {
+    color: var(--purple-light);
+    transform: scale(1.2);
+}
+
+/* Heart Liked State: Triggers Heart Power Boost */
+.like-btn.liked {
+    color: #ff0055 !important;
+    animation: heartPowerBoost 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+/* Song Bar Reacts to Heart Being Liked Inside It */
+.song-item:has(.like-btn.liked) {
+    animation: songBarElectricSurge 0.6s ease-in-out forwards;
 }
